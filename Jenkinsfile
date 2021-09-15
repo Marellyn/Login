@@ -1,11 +1,11 @@
-nodo {
-  etapa ('SCM') {
-    pagar scm
+node {
+  stage('SCM') {
+    checkout scm
   }
-  stage ('Análisis de SonarQube') {
-    def mvn = herramienta 'Maven predeterminado';
-    withSonarQubeEnv () {
-      sh "$ {mvn} / bin / mvn sonar: sonar"
+  stage('SonarQube Analysis') {
+    def mvn = tool 'Default Maven';
+    withSonarQubeEnv() {
+      sh "${mvn}/bin/mvn sonar:sonar"
     }
   }
 }
